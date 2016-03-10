@@ -13,9 +13,12 @@ int main(){
 
     make_request(sock);
     get_response(sock);
+
+    printf("%d\n",ntohl(addr.sin_addr.s_addr));
+    printf("%s\n",inet_ntoa(addr.sin_addr));
     
     close(sock);
-
+    
     return 0;
 }
  

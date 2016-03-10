@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <netdb.h>
 
 struct sockaddr_in make_addr(){
     struct sockaddr_in addr;
@@ -26,11 +27,12 @@ int make_socket(){
 void make_request(int sock){
     char* req =
 	"GET / HTTP 1.1\r\n"
-	"Host: localhost:8000\r\n"
+	"Host: https://tracker.avistaz.to/b3d5d3a8e6c1bae53d9834c08076d7aa/announce\r\n"
+	//"Host: localhost:8000\r\n"
 	"Accept: */*\r\n"
 	"User-Agent: light-torrent\r\n"
-	"Connection: close\r\n\r\n";  
-    int sent = send(sock,req,strlen(req),0);
+	"Connection: close\r\n\r\n";
+   int sent = send(sock,req,strlen(req),0);
 }
 
 void get_response(int sock){
