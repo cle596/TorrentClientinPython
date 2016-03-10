@@ -1,2 +1,2 @@
-lt: main.c
-	gcc main.c -o lt
+lt: main.c connect.c
+	gcc main.c connect.c -o lt
