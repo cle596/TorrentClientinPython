@@ -11,6 +11,7 @@
 #include <arpa/inet.h>
 
 int make_socket();
-void make_request();
-void get_response();
+struct sockaddr_in make_addr();
+void make_request(int);
+void get_response(int);
 

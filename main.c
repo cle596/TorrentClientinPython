@@ -1,15 +1,3 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/un.h>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
 #include "connect.h"
 
 int main(){
@@ -17,13 +5,14 @@ int main(){
     printf("Welcome to Light Torrent :)\n\n");
 
     int sock = make_socket();
+    struct sockaddr_in addr = make_addr();
     
     int ret = connect(sock,
 		      (struct sockaddr*)&addr,
 		      sizeof(struct sockaddr));
 
-    make_request();
-    get_response();
+    make_request(sock);
+    get_response(sock);
     
     close(sock);
 
