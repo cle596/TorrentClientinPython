@@ -1,0 +1,27 @@
+import requests
+from bencode import *
+import pprint 
+import codecs
+import binascii
+import unicodedata
+import base64
+import urllib
+import struct
+import socket
+
+tracker = "http://tracker.flashtorrents.org:6969/announce"+\
+          "?info_hash=_%0E%9B%F4%DAX%9F%AE%8F%BE%DEh%2Ah16ff%D0%8E"+\
+          "&peer_id=12345678901234567890"+\
+          "&uploaded=0"+\
+          "&event=started"+\
+          "&compact=1"
+
+r = requests.get(tracker)
+print r
+peers = bdecode(r.text)["peers"]
+print type(peers)
+
+struct.unpack_from(r id is 20 bytes plus 3 bytes bencoding overhead. The ip is a string containing a domain name or an IP address, and an integer port number. The ip is variable length, but since in its longest form it is a domain name it cannot exceed 255 bytes [2] plus 4 bytes bencoding overhead. Bencoded integers are also variable length but since it is a port number, it cannot be more than 7 bytes including bencoding overhead. Thus,
+
+                   total peer list length in bytes < n * ( 23 + 259 + 7 )
+                   It is common now to use a compact format where each peer is represented using only 6 bytes. The first 4 bytes contain the 32-bit ipv4 address. The remaining two bytes contain th")

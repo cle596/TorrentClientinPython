@@ -5,7 +5,7 @@ import urllib
 import string
 import random
 
-f = open("damn.torrent")
+f = open("abc.torrent")
 buf = f.read()
 obj = bdecode(buf)
 obj2 = obj

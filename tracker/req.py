@@ -9,8 +9,8 @@ import urllib
 import struct
 import socket
 
-tracker = "http://tracker.yts.re/announce"+\
-          "?info_hash=%D9%5Cy%F7U5%407%5De%9C%CC%5B%2C%A7%9D%A3%1E%B1%DF"+\
+tracker = "http://tracker.flashtorrents.org:6969/announce"+\
+          "?info_hash=_%0E%9B%F4%DAX%9F%AE%8F%BE%DEh%2Ah16ff%D0%8E"+\
           "&peer_id=12345678901234567890"+\
           "&uploaded=0"+\
           "&event=started"+\
@@ -18,9 +18,15 @@ tracker = "http://tracker.yts.re/announce"+\
 
 r = requests.get(tracker)
 print r
-print (r.text)
-res = bdecode(r.text)
-peers = res["peers"]
-peers = peers.encode("utf8")
+peers = bdecode(r.text)["peers"]
+print type(peers)
 
-print peers
+print (len(peers))
+#peers = str(peers)
+#print type(peers)
+peers=peers.encode('ascii', 'ignore')
+
+ip = struct.unpack_from("!i",peers,0)[0]
+ip = socket.inet_ntoa(struct.pack("!i", ip))
+
+print ip
