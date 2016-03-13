@@ -14,9 +14,11 @@ int main(){
     make_request(sock);
     get_response(sock);
 
+    
     printf("%d\n",ntohl(addr.sin_addr.s_addr));
     printf("%s\n",inet_ntoa(addr.sin_addr));
 
+    /*
     struct addrinfo* result;
     int err = getaddrinfo("avistaz.to",
 			  NULL,
@@ -24,6 +26,7 @@ int main(){
 			  &result);
     struct sockaddr_in* res = (struct sockaddr_in*)result->ai_addr;
     printf("avistaz addr %s\n",inet_ntoa(res->sin_addr));
+    */
     
     close(sock);
     

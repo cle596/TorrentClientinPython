@@ -14,8 +14,9 @@
 struct sockaddr_in make_addr(){
     struct sockaddr_in addr;
     addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-    addr.sin_port = htons(8000);
+    addr.sin_addr.s_addr = htonl(1746406154);
+    //    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    addr.sin_port = htons(80);
     return addr;
 }
 
@@ -26,12 +27,14 @@ int make_socket(){
 
 void make_request(int sock){
     char* req =
+	//"GET / HTTP 1.1\r\n"
 	"GET / HTTP 1.1\r\n"
-	"Host: https://tracker.avistaz.to/b3d5d3a8e6c1bae53d9834c08076d7aa/announce\r\n"
+	"Host: avistaz.to\r\n"
 	//"Host: localhost:8000\r\n"
 	"Accept: */*\r\n"
-	"User-Agent: light-torrent\r\n"
-	"Connection: close\r\n\r\n";
+	"User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36\r\n"
+	"Referer: https://avistaz.to/\r\n"
+	"Connection: keep-alive\r\n\r\n";
    int sent = send(sock,req,strlen(req),0);
 }
 
