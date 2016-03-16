@@ -1,6 +1,6 @@
 import requests
 from bencode import *
-import pprint 
+import pprint
 import codecs
 import binascii
 import unicodedata
@@ -19,14 +19,16 @@ tracker = "http://tracker.flashtorrents.org:6969/announce"+\
 r = requests.get(tracker)
 print r
 peers = bdecode(r.text)["peers"]
-print type(peers)
 
-print (len(peers))
 #peers = str(peers)
 #print type(peers)
 peers=peers.encode('ascii', 'ignore')
 
-ip = struct.unpack_from("!i",peers,0)[0]
+offset = 0
+ip = struct.unpack_from("!i",peers,offset)[0]
 ip = socket.inet_ntoa(struct.pack("!i", ip))
+offset += 4
+port = struct.unpack_from("!H",ip,offset)[0]
+offset += 2
 
-print ip
+print ip, port
