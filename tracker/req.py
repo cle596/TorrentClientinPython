@@ -19,10 +19,13 @@ tracker = "http://tracker.flashtorrents.org:6969/announce"+\
 r = requests.get(tracker)
 
 peers = bdecode(r.text)["peers"]
-peers = peers.encode('ascii', 'ignore')
+print type(peers)
+peers = peers.encode('utf8', 'ignore')
+print type(peers)
 
 no = len(peers)/6
 
+print "IP"+"\t\t"+"PORT"
 i=0
 offset = 0
 while i < no:
@@ -31,5 +34,5 @@ while i < no:
     offset += 4
     port = struct.unpack_from("!H",peers,offset)[0]
     offset += 2
-    print ip,port
+    print ip+"\t"+str(port)
     i += 1
