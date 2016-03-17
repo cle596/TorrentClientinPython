@@ -19,9 +19,7 @@ tracker = "http://tracker.flashtorrents.org:6969/announce"+\
 r = requests.get(tracker)
 
 peers = bdecode(r.text)["peers"]
-print type(peers)
 peers = peers.encode('utf8', 'ignore')
-print type(peers)
 
 no = len(peers)/6
 
@@ -36,3 +34,16 @@ while i < no:
     offset += 2
     print ip+"\t"+str(port)
     i += 1
+
+TCP_IP = '127.0.0.1'
+TCP_PORT = 6881
+BUFFER_SIZE = 1024
+MSG = "Hello World!"
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((TCP_IP,TCP_PORT))
+s.send(MSG)
+data = s.recv(BUFFER_SIZE)
+s.close()
+
+print "recv'd: ", data
