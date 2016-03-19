@@ -24,6 +24,7 @@ peers = peers.encode('utf8', 'ignore')
 no = len(peers)/6
 
 print "IP"+"\t\t"+"PORT"
+peers_list = []
 i=0
 offset = 0
 while i < no:
@@ -32,18 +33,6 @@ while i < no:
     offset += 4
     port = struct.unpack_from("!H",peers,offset)[0]
     offset += 2
+    peers_list.append((ip,port))
     print ip+"\t"+str(port)
     i += 1
-
-TCP_IP = '127.0.0.1'
-TCP_PORT = 6881
-BUFFER_SIZE = 1024
-MSG = "Hello World!"
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP,TCP_PORT))
-s.send(MSG)
-data = s.recv(BUFFER_SIZE)
-s.close()
-
-print "recv'd: ", data
