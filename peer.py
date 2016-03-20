@@ -1,19 +1,18 @@
 import socket
 
-def connectPeer():
+def connectPeer(peer,hash,id):
 
-    TCP_IP = '196.152.62.17'
-    TCP_PORT = 50077
+    TCP_IP = peer[0]
+    TCP_PORT = peer[1] 
     BUFFER_SIZE = 1024
-    MSG = (chr(19) + \
-        "BitTorrent protocol" + \
-        8 * chr(0) + \
-        self.getInfoHash(torrentCont) + \
-        self.peer_id)
+    HANDSHAKE = chr(19) + "BitTorrent protocol" + 8 * chr(0) + hash + id
+    MSG = "6"
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print TCP_IP, TCP_PORT
     s.connect((TCP_IP,TCP_PORT))
-    s.send(MSG)
+
+    s.send(HANDSHAKE)
     data = s.recv(BUFFER_SIZE)
     s.close()
 

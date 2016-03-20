@@ -1,7 +1,8 @@
 from infohash import *
 from tracker import *
+from peer import *
 
-info_hash = getInfoHash()
-peers_list = getPeers()
-
-print info_hash,peers_list
+hash = getInfoHash()
+id = getID()
+peers = getPeers(hash,id)
+connectPeer(peers[0],hash,id)

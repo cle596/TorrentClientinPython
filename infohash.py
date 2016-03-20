@@ -29,11 +29,13 @@ def getInfoHash():
 
     f.close()
 
-    peer = "DE1312"
-    for x in range(0,14):
-        peer += random.choice(string.letters)
-    peer = urllib.quote(peer)
-
     #print(peer)``
 
     return info_hash
+
+def getID():
+    peer = ""
+    for x in range(0,20):
+        peer += random.choice(string.letters)
+    peer = urllib.quote(peer)
+    return peer

@@ -9,11 +9,11 @@ import urllib
 import struct
 import socket
 
-def getPeers():
+def getPeers(hash,id):
 
     tracker = "http://tracker.flashtorrents.org:6969/announce"+\
-              "?info_hash=_%0E%9B%F4%DAX%9F%AE%8F%BE%DEh%2Ah16ff%D0%8E"+\
-              "&peer_id=12345678901234567890"+\
+              "?info_hash="+hash+\
+              "&peer_id="+id+\
               "&uploaded=0"+\
               "&event=started"+\
               "&compact=1"
