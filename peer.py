@@ -1,4 +1,4 @@
-import socket
+from socket import *
 from struct import *
 
 def connectPeer(peers,hash,id):
@@ -8,7 +8,7 @@ def connectPeer(peers,hash,id):
     hs = pack("!B19s8x20s20s",len(pstr),pstr,hash,id)
     MSG = pack("!2B",1,0)
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket(AF_INET, SOCK_STREAM)
     print (len(peers))
     x = peers[len(peers)-2]
     TCP_IP = x[0]
