@@ -11,7 +11,7 @@ import socket
 
 def getPeers(hash,id):
 
-    tracker = "http://tracker.flashtorrents.org:6969/announce"+\
+    tracker = "http://tracker.tfile.me/announce"+\
               "?info_hash="+hash+\
               "&peer_id="+id+\
               "&uploaded=0"+\
