@@ -14,13 +14,19 @@ def getPeers(hash,id):
     tracker = "http://tracker.tfile.me/announce"+\
               "?info_hash="+hash+\
               "&peer_id="+id+\
+              "&port=9000"+\
               "&uploaded=0"+\
               "&event=started"+\
               "&compact=1"
 
     r = requests.get(tracker)
 
-    peers = bdecode(r.text)["peers"]
+    res = bdecode(r.text)
+    """
+    for x in res.keys():
+        print(x)
+    """
+    peers = res["peers"]
     peers = peers.encode('utf8', 'ignore')
 
     no = len(peers)/6
